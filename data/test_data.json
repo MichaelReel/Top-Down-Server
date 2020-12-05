@@ -1,0 +1,10 @@
+{
+    "archer": {
+        "walk_speed": 200,
+        "strafe_speed": 150
+    },
+    "arrow": {
+        "speed": 600,
+        "damage": 5
+    }
+}

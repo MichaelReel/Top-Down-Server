@@ -20,3 +20,9 @@ func _peer_connected(player_id):
 
 func _peer_disconnected(player_id):
 	print("User " + str(player_id) + " disconnected")
+
+remote func fetch_skill_data(key_path : String, inst_id : String):
+	var player_id = get_tree().get_rpc_sender_id()
+	var value = ServerData.get_skill_data(key_path)
+	rpc_id(player_id, "return_skill_data", value, inst_id)
+	print("sending " + str(value) + " to player " + str(player_id) + " for inst " + str(inst_id) + " by key " + key_path)
