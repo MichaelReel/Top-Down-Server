@@ -16,7 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Top Down Gateway"
+run/main_scene="res://scenes/main/LoginServer.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Authenticate="*res://scenes/singletons/Authenticate.gd"
+Gateway="*res://scenes/singletons/Gateway.gd"
 
 [rendering]
 

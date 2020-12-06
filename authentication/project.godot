@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Top Down Authentication"
+run/main_scene="res://scenes/main/Authenticate.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayerData="*res://scenes/singletons/PlayerData.gd"
 
 [rendering]
 
