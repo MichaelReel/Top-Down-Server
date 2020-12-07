@@ -6,7 +6,12 @@ export_presets.cfg
 *.import
 *.pck
 *.x86_64
+*.64
+*.zip
 
 # Mono-specific ignores
 .mono/
 data_*/
+
+# Generic
+/logs

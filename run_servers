@@ -1,0 +1,47 @@
+#!/bin/bash
+
+GODOT_VERSION=3.2.3
+
+# sudo apt-get install wget unzip
+
+BASE_URL='https://downloads.tuxfamily.org/godotengine'
+GODOT_SERVER=stable_linux_server.64
+
+# Get the server exe if we don't have it already
+EXE_NAME=Godot_v${GODOT_VERSION}-${GODOT_SERVER}
+
+if ! test -f ${EXE_NAME}; then
+    wget ${BASE_URL}/${GODOT_VERSION}/${EXE_NAME}.zip
+    unzip ${EXE_NAME}.zip
+    rm ${EXE_NAME}.zip
+else
+    echo "Executable ${EXE_NAME} already present"
+fi
+
+# Use the server exe to run each server
+PIDS=""
+for SERVER in authentication world gateway; do
+    ./${EXE_NAME} --path ./${SERVER}/ &
+    PID=$!
+    PIDS=("${PID} ${PIDS}")
+    echo ${SERVER}:${PID}
+done
+
+echo " +-------------------+ "
+echo " | Servers starting  | "
+echo " | Press 'q' to exit | "
+echo " +-------------------+ "
+echo "${PIDS}"
+
+while : ; do
+    read -n 1 k <&1
+    if [[ $k = q ]] ; then
+        printf "\nQuitting from the program\n"
+        break
+    else
+        echo "Press 'q' to exit"
+    fi
+done
+
+echo "Killing ${PIDS}"
+kill ${PIDS}
