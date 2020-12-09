@@ -10,6 +10,8 @@ GODOT_SERVER=stable_linux_server.64
 # Get the server exe if we don't have it already
 EXE_NAME=Godot_v${GODOT_VERSION}-${GODOT_SERVER}
 
+SERVER_LIST=${@:-"authentication world gateway"}
+
 if ! test -f ${EXE_NAME}; then
     wget ${BASE_URL}/${GODOT_VERSION}/${EXE_NAME}.zip
     unzip ${EXE_NAME}.zip
@@ -20,7 +22,7 @@ fi
 
 # Use the server exe to run each server
 PIDS=""
-for SERVER in authentication world gateway; do
+for SERVER in $SERVER_LIST; do
     ./${EXE_NAME} --path ./${SERVER}/ &
     PID=$!
     PIDS=("${PID} ${PIDS}")
