@@ -16,9 +16,9 @@ _global_script_class_icons={
 [application]
 
 config/name="Top Down World Server"
-run/main_scene="res://server/main/Server.tscn"
+run/main_scene="res://scenes/main/Server.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-ServerData="*res://server/singletons/data.gd"
+ServerData="*res://scenes/singletons/data.gd"
