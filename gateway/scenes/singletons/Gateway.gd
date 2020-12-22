@@ -34,6 +34,6 @@ remote func login_request(username, password):
 	var player_id = custom_multiplayer.get_rpc_sender_id()
 	Authenticate.authenticate_player(username, password, player_id)
 
-func return_login_request(result, player_id):
-	rpc_id(player_id, "return_login_request", result)
+func return_login_request(result, player_id, token):
+	rpc_id(player_id, "return_login_request", result, token)
 	network.disconnect_peer(player_id)

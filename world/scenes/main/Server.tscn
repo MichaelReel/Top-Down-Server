@@ -11,4 +11,14 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 player_container_scene = ExtResource( 3 )
 
+[node name="VerificationExpiry" type="Timer" parent="PlayerVerification"]
+wait_time = 10.0
+autostart = true
+
 [node name="Combat" type="Node" parent="."]
+
+[node name="TokerExpiry" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+[connection signal="timeout" from="PlayerVerification/VerificationExpiry" to="PlayerVerification" method="_on_VerificationExpiry_timeout"]
+[connection signal="timeout" from="TokerExpiry" to="." method="_on_TokerExpiry_timeout"]
